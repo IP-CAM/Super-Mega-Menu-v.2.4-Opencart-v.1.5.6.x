@@ -1,0 +1,106 @@
+<?php
+// Heading
+$_['heading_title']       = 'Super Mega Menu'; 
+
+// Text
+$_['text_module']         = 'Modules';
+$_['text_stores']         = 'Stores:';
+$_['text_fbrands']        = 'Manufacturers id: <br /><span style="color: #06f; font-weight: normal; font-size: 11px;">Insert the manufacturers ids separated by comma. Ex: 5,23,55,69</span>';
+$_['text_success']        = 'Success: You have modified module Super Mega Menu!';
+$_['text_content_top']    = 'Content Top';
+$_['text_content_bottom'] = 'Content Bottom';
+$_['text_column_left']    = 'Column Left';
+$_['text_column_right']   = 'Column Right';
+$_['text_justadd']           = 'Just banner space';
+$_['text_alldrop']           = 'All dropdown';
+$_['text_sorder']            = 'Order';
+$_['text_productlimit']      = '<b>Products Limit: </b>';
+$_['text_productlatest']     = 'Latest Products';
+$_['text_productspecial']    = 'Special priced products';
+$_['text_productfeatured']   = 'Featured Products';
+$_['text_productbestseller'] = 'Bestselling products';
+$_['text_whatproducts']      = 'Select the type of products';
+$_['text_overdrop']          = 'Above categories';
+$_['text_tlcolor']           = 'Top link custom color:';
+$_['text_tlstyle']           = 'Top item custom class:<br /><span style="color: #06f; font-weight: normal; font-size: 11px;">Applies to the list item.</span>';
+$_['text_image_manager']     = 'Image Manager';
+$_['text_browse']            = 'Browse Files';
+$_['text_clear']             = 'Clear Image';
+$_['text_sview']             = 'Dropdown:';
+$_['text_expando']           = 'Expand Advanced Settings';
+$_['text_slist']             = 'Normal list';
+$_['text_sgrid']             = 'Grid with images';
+$_['text_dwidth']            = 'Dropdown width (px):';
+$_['text_iwidth']            = 'Item width (px):';
+$_['text_chtml']             = 'Custom html dropdown:';
+$_['text_cchtml']            = 'Html area:';
+$_['text_iwidth']            = 'Item width (px):';
+$_['more_status']            = 'Display the more dropdown?';
+$_['more_name']              = '+More Dropdown name:';
+$_['more2_name']             = 'Featured Categories Dropdown name:';
+$_['tab_items']              = 'Supermenu items';
+$_['tab_settings']           = 'Supermenu Settings';
+$_['tab_html']               = 'Custom Html area';
+$_['text_general']           = 'General';
+$_['text_more_dropdown']     = 'Categories from the more dropdown';
+$_['text_more2_dropdown']     = 'Select Featured Categories';
+$_['text_languagerelated']   = 'Language related';
+$_['text_customization']     = 'Customization';
+$_['text_settings_isresponsive']     = 'Make Supermenu Responsive:';
+$_['text_settings_dropdowntitle']    = 'Display item title in dropdown:';
+$_['text_settings_topitemlink']      = 'Link to the top item:';
+$_['text_settings_flyoutwidth']      = 'Default Flyout width (in px):';
+$_['text_settings_mobilemenuname']   = 'Mobile Supermenu Name:';
+$_['text_settings_infodname']        = 'Information Dropdown Name:';
+$_['text_settings_brandsdname']      = 'Brands Dropdown Name: ';
+$_['text_settings_latestpname']      = 'Latest Products Dropdown Name:';
+$_['text_settings_specialpname']     = 'Special Products Dropdown Name:';
+$_['text_settings_featuredpname']    = 'Featured Products Dropdown Name:';
+$_['text_settings_bestpname']        = 'BestSelling Products Dropdown Name:';
+$_['text_settings_menuskin']         = 'Supermenu Skin:';
+$_['text_settings_viewmorename']     = 'View More link Name:  <span style="color: #06f; font-weight: normal; font-size: 11px;">( when displaying limited number of subcategories )</span>';
+$_['text_settings_viewallname']      = 'View all Link Name: <span style="color: #06f; font-weight: normal; font-size: 11px;">( when displaying link to top item in dropdown)</span>';
+$_['text_subcatdisplay']             = 'Subcategory levels displayed:';
+$_['text_subcatdisplay_all']         = 'Both two levels';
+$_['text_subcatdisplay_level1']      = 'Only the first level of children';
+$_['text_subcatdisplay_none']        = 'No subcategories';
+$_['text_dflist']                    = 'Dropdown + Flyout list';
+$_['text_dfgrid']                    = 'Dropdown + Flyout grid with images';
+$_['text_3dlevellimit']              = 'Subcategories limit: <span style="color: #06f; font-weight: normal; font-size: 11px;">( for the 3rd level of subcategories )</span>';
+$_['text_settings_dropeffect']       = 'Dropdown display effect:';
+$_['text_settings_hoverintent']      = 'Use hoverIntent:';
+$_['text_settings_tophomelink']      = 'Display home icon link in menu:';
+$_['text_settings_bspacewidth']      = 'Dropdown Banner Space width:';
+$_['text_settings_supercache']       = 'Enable Supermenu cache:<br /><span class="help inred">Note that if you enable caching for the menu items the changes you make for categories and products will not reflect in the menu unless you edit the supermenu and then save so that the cache gets deleted</span>';
+
+// Entry
+$_['entry_type']          = 'Item Type and Style: <br /> <span style="color: #06f; font-weight: normal; font-size: 11px;">Here you select the type of the menu item and its display style.</span>';
+$_['entry_category']      = 'Select a category:';
+$_['entry_information']   = 'Select an information link:';
+$_['entry_custom']        = 'Insert custom link url and name:';
+$_['entry_add']           = 'Dropdown Add banner: <br /> <span style="color: #888; font-weight: normal; font-size: 11px;">Clik to expand.</span>';
+$_['entry_advanced']      = 'Advanced Settings: <br /> <span style="color: #06f; font-weight: normal; font-size: 11px;">Here you can customize the dropdown with below setings.</span>';
+$_['entry_iset']          = 'Item Settings: <br /> <span style="color: #06f; font-weight: normal; font-size: 11px;">Basic settings for the supermenu item.</span>';
+$_['type_custom']         = 'Custom link';
+$_['type_cat']            = 'Category';
+$_['type_infol']          = 'Information Link';
+$_['type_infod']          = 'Information Dropdown';
+$_['type_more']           = 'More Dropdown';
+$_['type_more2']          = 'Featured Categories Dropdown';
+$_['type_products']       = 'Products';
+$_['type_login']          = 'Login/Account Dropdown';
+$_['type_catprods']       = 'Category with latest products';
+$_['type_mand']           = 'Brands Dropdown';
+$_['custom_url']          = '  URL :';
+$_['custom_name']         = 'Name:';
+$_['entry_layout']        = 'Layout:';
+$_['entry_position']      = 'Position:';
+$_['entry_count']    	  = 'Product Count:';
+$_['entry_status']        = 'Status:';
+$_['entry_sort_order']    = 'Sort Order:';
+$_['entry_image_size']    = 'Item Image size(WxH):';
+$_['button_add_item']     = 'Add Item';
+
+// Error
+$_['error_permission']    = 'Warning: You do not have permission to modify module Super Mega Menu!';
+?>

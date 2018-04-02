@@ -1,0 +1,270 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Super Mega menu for Opencart 1.5.x</title>
+</head>
+<style type="text/css">
+body { font-family: arial !important; }
+.container { margin-left: 230px; }
+.column { float: left; position: fixed; width: 200px; margin-right: 8px; border-right: 1px solid #ddd; height: 100%; padding-top: 100px; padding-left: 15px;}
+.column a {
+ display: block;
+ font-size: 14px;
+ text-decoration: none;
+ font-weight: bold;
+ color: #555;
+ padding-top: 7px;
+ padding-bottom: 7px;
+ border-bottom: 1px solid #e7e7e7;
+ padding-left: 5px;
+}
+.column a:nth-child(even) { background: #eee; }
+.codeblock { display: block;
+padding: 10px;
+background: #eee;
+border: 1px solid #ddd;
+border-radius: 5px;
+box-shadow: inset 0px 0px 4px #999;
+}
+</style>
+<body bgcolor="#fff">
+<div class="column">
+<h2>Index</h2>
+<a href="#install">Installation</a>
+<a href="#upgrade">Upgrade</a>
+<a href="#types">Supermenu Item Types</a>
+<a href="#ading">Adding items to supermenu</a>
+<a href="#more">The "+More" dropdown</a>
+<a href="#display">Dropdown display styles</a>
+<a href="#sets">Supermenu Settings</a>
+<a href="#custom">Supermenu Customization</a>
+<a href="#tweaks">Supermenu Tweaks</a>
+<a href="#support">Support</a>
+</div>
+<div class="container"style="padding: 20px; background: #fff;">
+<h1 align="center">Super Mega V2.3 menu for Opencart 1.5.x </h1>
+<div>
+<h2 align="center"><br><font color="#ff0000">Upgrade notices</font></h2>
+<p> In latest upgrade of supermenu a new item type was added called Featured Categories, which is basically a clone of the More dropdown feature and works in the same way.</p>
+<p> In latest upgrade of supermenu 4 new skins for the menu where added, you can change them in admin in the settings tab</p>
+<p><strong>One of the new skins called Image Menu will display for the top items an image. The image displayed is the Add banner, so when using Image Menu Skin the add banner image that you can set for each item will be the top item image. This also means you will not have banner in the dropdown but you could still use the html areas to add images in the banner area of the dropdown.</strong></p>
+</div>
+<a name="install"></a> 
+<div>
+<h2 align="center"><br><font color="#ff0000">
+Installation</font></h2>
+<p><font face="Tahoma">Inside the archive you will find the upload files folder. 
+(one for the vqmod version and one for the non-vqmod version)</font></p>
+<h3><font color="#0000ff">Upload vqmod version</font> </h3>
+<p><font face="Tahoma">If you have vqmod installed on your store , open the 
+'upload vqmod version' folder and from within it upload the admin, catalog and 
+vqmod folders directly to your opencart root (the opencart root is the folder on 
+your ftp where you installed opencart, it contains folders like: admin, catalog, 
+system, image and files like: index.php, config.php and/or htaccess.txt). Thats 
+about it for the vqmod version installation, the rest can be done from admin and 
+will be explained below.</font></p>
+<h3><font color="#0000ff">Upload no vqmod version</font></h3>
+<p><font face="Tahoma">If you dont have vqmod installed on your store, open the 
+'upload no vqmod version' folder and from within it, upload the admin and 
+catalog folders directly to your opencart root.</font></p>
+<p><font face="Tahoma">Now if you uploaded the no vqmod version, you will have to 
+do 2 small modifications:</font></p>
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: medium; line-height: normal;"><font face="Tahoma"><strong><font size="4">1.</font></strong>Edit the file catalog/controller/common/header.php and find the line:</font></p>
+
+<div class="codeblock" style="padding: 10px; background-color: rgb(244, 215, 215); border: 1px solid rgb(221, 221, 221); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; box-shadow: rgb(153, 153, 153) 0px 0px 4px inset; color: rgb(0, 0, 0); font-family: arial; font-size: medium; line-height: normal;">
+<p><font color="#408080" face="Tahoma">$this-&gt;children = array(</font></p>
+</div>
+
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: medium; line-height: normal;"><font face="Tahoma">&gt;-&gt;-&gt;replace that line with:</font></p>
+
+<div class="codeblock" style="padding: 10px; background-color: rgb(244, 215, 215); border: 1px solid rgb(221, 221, 221); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; box-shadow: rgb(153, 153, 153) 0px 0px 4px inset; color: rgb(0, 0, 0); font-family: arial; font-size: medium; line-height: normal;">
+<p><font color="#408080" face="Tahoma">$this-&gt;data['categories'] = null;</font></p>
+
+<p><font color="#408080" face="Tahoma">$this-&gt;children = array(</font></p>
+
+<p><font color="#408080" face="Tahoma">'module/supermenu',</font></p>
+
+<p><font color="#408080" face="Tahoma">'module/supermenu_settings',</font></p>
+</div>
+
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: medium; line-height: normal;"><font face="Tahoma"><strong><font size="4">2.</font></strong>Now edit the file catalog/view/theme/yourtheme/template/common/header.tpl (where yourtheme stands for your active theme on store) and find the line:</font></p>
+
+<div class="codeblock" style="padding: 10px; background-color: rgb(244, 215, 215); border: 1px solid rgb(221, 221, 221); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; box-shadow: rgb(153, 153, 153) 0px 0px 4px inset; color: rgb(0, 0, 0); font-family: arial; font-size: medium; line-height: normal;">
+<p><font color="#408080" face="Tahoma">&lt;/head&gt;</font></p>
+</div>
+
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: medium; line-height: normal;"><font face="Tahoma">&gt;-&gt;-&gt;and above it, add the code:</font></p>
+
+<div class="codeblock" style="padding: 10px; background-color: rgb(244, 215, 215); border: 1px solid rgb(221, 221, 221); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; box-shadow: rgb(153, 153, 153) 0px 0px 4px inset; color: rgb(0, 0, 0); font-family: arial; font-size: medium; line-height: normal;">
+<p><font color="#408080" face="Tahoma">&lt;?php echo $supermenu_settings; ?&gt;</font></p>
+</div>
+
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: medium; line-height: normal;"><font face="Tahoma">then find the line:</font></p>
+
+<div class="codeblock" style="padding: 10px; background-color: rgb(244, 215, 215); border: 1px solid rgb(221, 221, 221); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; box-shadow: rgb(153, 153, 153) 0px 0px 4px inset; color: rgb(0, 0, 0); font-family: arial; font-size: medium; line-height: normal;">
+<p><font color="#408080" face="Tahoma">&lt;?php if ($categories) { ?&gt;</font></p>
+</div>
+
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: medium; line-height: normal;"><font face="Tahoma">&gt;-&gt;-&gt;and above it, add the code:</font></p>
+
+<div class="codeblock" style="padding: 10px; background-color: rgb(244, 215, 215); border: 1px solid rgb(221, 221, 221); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; box-shadow: rgb(153, 153, 153) 0px 0px 4px inset; color: rgb(0, 0, 0); font-family: arial; font-size: medium; line-height: normal;">
+<p><font color="#408080" face="Tahoma">&lt;?php echo $supermenu; ?&gt;</font></p>
+
+<div>&nbsp;</div>
+</div>
+
+<p><font face="Tahoma">&gt;+&gt;+&gt; Done, you only need to do the modifications 
+above if you installed the no vqmod version.</font><font 
+face=Tahoma>&nbsp;</font></p>
+<p><font face="Tahoma">Now log into your store's admin and navigate to extension 
+&gt; modules.</font></p>
+<p><font face="Tahoma">Locate the module called 'Super Mega Menu' and click 
+install.</font></p>
+<p><font face="Tahoma">Now the installation is done!</font></p>
+</div>
+<a name="types"></a>
+<h2 align="center" style="color: rgb(0, 0, 0); font-family: arial; line-height: normal;"><font color="#ff0000">Supermenu Item types</font></h2>
+
+<p><font color="#333">At this point in supermenu there are 9 types of items that can easyly be aded to the top menu, they are.</font></p>
+<p><img src="z-instruction-images/type.jpg" alt="menu types" /></p>
+<ol>
+	<li><font color="#333">Category - with this item type you can add a category to the supermenu, and if this category has subcategories a dropdown will also be available</font></li>
+	<li><font color="#333">Information Link - simply display a link in the top menu to an information page</font></li>
+	<li><font color="#333">Information Dropdown - adds a menu item called information with a dropdown containing all the information pages</font></li>
+	<li><font color="#333">Custom link - adds a custom link to any page you want in the top menu with configurable name and url</font></li>
+	<li><font color="#333">Brands Dropdown - adds a menu item called brands with a dropdown containing all the brands in the store</font></li>
+	<li><font color="#333">More dropdown - displays a set of categories in the dropdown - you can set what categories in the settings tab at "categories from the more dropdown"</font></li>
+	<li><font color="#333"><strong>Featured Categories - Added in latest upgrade (basically a clone of the more dropdown function)</strong> -  displays a set of categories in the dropdown - you can set what categories in the settings tab at "Featured Categories"</font></li>
+	<li><font color="#333">Products - display a menu item with latest / bestselleing / special / featured products</font></li>
+	<li><font color="#333">Categories with products - display a configurable number of latest products from a certain category</font></li>
+	<li><font color="#333">Login / Account dropdown - display a login dropdown if the customer is not lgged in or an account dropdown if the user is allready logged in</font></li>
+</ol>
+<a name="ading"></a>
+<h2 align="center"><font color="#ff0000">Adding items to supermenu</font></h2>
+<p><img src="z-instruction-images/add.jpg" alt="add items" /></p>
+<p><font color="#333">First edit the supermenu module to get to the module page if you havent allready. When supermenu page first opens, it opens in the items tab which is the tab where youll find your added items from now on.</font></p>
+
+<p><font color="#333">To add an item to the supermenu simply click the add item button and a form with options will appear.</font></p>
+
+<p><font color="#333">To remove a supermenu item click on the remove button of that item.</font></p>
+
+<p><font color="#333">As said when clicking the add item button a row with options appear. It has 3 columns, the first one is for selecting the item type and its dropdown view style, the second column is for the item settings and the 3rd column contains the advanced settings for the added item.</font></p>
+
+<p><font color="#333">The first column is straight forward, you select what type of item you are adding (category, custom link, info link etc) and the view style of the dropdown of that item (if it has a dropdown).</font></p>
+
+<p><font color="#333">The second column content depends on what you selected in the first column at item type, if you selected category a category selector will appear so you can select the category to display, if you selected custom link 2 fields will appear for the custom link name and url, if you selected brands dropdown or info dropdown nothing additional will appear except for the dropdown banner option.</font></p>
+
+<p><font color="#333">On the 3rd coumn there is a button that when clicked it expands a list with advanced settings for the item. the advanced settings contain:</font></p>
+<p><img src="z-instruction-images/as.jpg" alt="advanced settings" /></p>
+<ol>
+	<li>Top link custom color - here you can set a custom color that will only apply to the edited item in the top menu</li>
+	<li><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; line-height: normal;">Top item custom class - you can add a custom class to the top item in case you need to customize somehow only the edited item in css (for advanced users)</span></li>
+	<li><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; background-color: rgb(255, 255, 255);">Custom html dropdown - here you can set to display the contents of one of the 8 html areas from the Custom Html Areas tab, you can also set to display the custom html as the only content of the dropdown, display it only in the banner space area or display it above the categories/content of the dropdown</span></li>
+	<li><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; line-height: normal;">Subcategory levels displayed - by default supermenu displays up to 3rd level of categories in the dropdown, here you can also set to display only the second level or display no subcategories.</span></li>
+	<li><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; line-height: normal;">Dropdown width (px) - set a custom width for the dropdown of the edited item</span></li>
+	<li><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; line-height: normal;">Item width (px) - set a custom width for the items inside the dropdown</span></li>
+	<li><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; line-height: normal;">Stores - Select the stores in which you want the supermenu item to appear - usefull if you have a multistore setup, otherwise for a single store default will allways be selected. Tip: The supermenu item form doesnt have a status setting, and this is where this store setting can be very handy even in a single store setup, if you want to temporarily disable a supermenu item simply deselect default in the store list, to reenable it select default back on.</span></li>
+	<li><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; line-height: normal;">Manufacturers id - here you can input some manufacturer ids separated by comma and in the frontend&nbsp;the inserted brands will appear in a list on the right side of the dropdown</span></li>
+</ol>
+<a name="more"></a>
+<h2 align="center"><font color="#ff0000">The +more dropdown</font></h2>
+<p><img src="z-instruction-images/more.jpg" alt="more item" /></p>
+<p>The more dropdown is a menu item that displays a configured group of categories. Originally it was intended to display a "more" dropdown with the rest of your shop categories that couldnt fit in the top menu.</p>
+
+<p>You can add the more dropdown to the menu like any other item trough the add item button. But the content of the more dropdown must be set in the settings tab.</p>
+<p><img src="z-instruction-images/more2.jpg" alt="more item" /></p>
+<p>Click on the settings tab in the admin page of supermenu and on the right top you can see a selectbox with all the categories called "CATEGORIES FROM THE MORE DROPDOWN" , in there select the categories that you want to be displayed inside the more dropdown.</p>
+
+<p>Still in the settings tab, in the "LANGUAGE RELATED" area you can also set a custom name for the more dropdown.</p>
+<a name="display"></a>
+<h2 align="center"><font color="#ff0000">Dropdown display styles</font></h2>
+
+<p>In the first column when adding an item to the supermenu, for some item types you will see a setting called dropdown. There you cen set the display style of a dropdown, there are 4 available types:</p>
+
+<ol>
+	<li>Normal list - displays the items in the dropdowns a text links</li>
+	<li>Grid with images - displays the items in the dropdown as a grid with image for each item</li>
+	<li>Dropdown + Flyout list - displays a dropdown with the first level of subitems, then for each subitems that has its own subitems displays a flyout to the right on hover with it containing the sub-subitems as text links</li>
+	<li>Dropdown + Flyout Grid with images - displays a dropdown with the first level of subitems, then for each subitems that has its own subitems displays a flyout to the right on hover with it containing the sub-subitems as grid with images</li>
+</ol>
+
+<p>For item types like category and more dropdown all display styles are available, for item types like brands dropdown ot products dropdown while all 4 options show up only the first 2 should be used because theese item types dont have sub-subitems so there would be no flyout. For items like custom link , info link or info dropdown the dropdown display selector does not appear as it is not needed.&nbsp;</p>
+<a name="sets"></a>
+<h2 align="center"><font color="#ff0000">Supermenu Settings</font></h2>
+
+<p>The supermenu settings tab is split into 4 sections/areas:</p>
+<p><img src="z-instruction-images/sets.jpg" alt="settings" /></p>
+<ol>
+	<li>General - Contains general settings related to supermenu &gt; will be explained below</li>
+	<li>Categories from the more dropdown - this section was allready presented in the More dropdown chapter</li>
+	<li>Language Related - Here you can rename various words from the supermenu, it is also multilanguage, does not need further explanation , each setting tells you exactly what will be renamed</li>
+	<li>Customization - Here you can deply customize the look and colors of the supermenu, each customization setting has a name/explanatation and if you are not sure what it is for, you can just test it and see the result in the store.</li>
+</ol>
+
+<p><strong>General Settings:</strong></p>
+<p><img src="z-instruction-images/sets2.jpg" alt="settings" /></p>
+<ol>
+	<li><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; line-height: normal;">&nbsp;Display item title in dropdown - set to yes if you want the item name to also be displayed as a title in the dropdown</span></li>
+	<li><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; line-height: normal;">Link to the top item - <strong>important setting</strong> - here you set where the link to the top item will be. By default &nbsp;</span><span style="font-size: 13px; color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; line-height: normal;">&nbsp;</span><span style="color: rgb(34, 34, 34); font-family: Consolas, 'Lucida Console', monospace; font-size: 11.818181991577148px; line-height: normal; white-space: pre-wrap;">"View all button in bottom of dropdown"</span><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; line-height: normal;">&nbsp; &nbsp;is selected, which means that when the menu item has a dropdown instead of clicking the top item to go to its page, you click on the button from the dropdown (this option is so that dropdowns could be opened on touch screen devices easyer), but you also have the option to set it to "Top item has link" which means that when clicking the top item will go to its page and no button will be displayed in the dropdown. The 3rd option "Dropdown title has link" gives you the option that when displaying the item name as a dropdown tiltle it would also be a link and can be clicked/pushed to get to the item's page.</span></li>
+	<li><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; line-height: normal;">Display home icon link in menu - Gives you the option to display a home icon in the menu in a light or dark tone.</span></li>
+	<li><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; line-height: normal;">Dropdown Banner Space width - set a custom width for the dropdown banner space, applies to all dropdowns that have banners and the default size is 200px.</span></li>
+	<li><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; line-height: normal;">Subcategories limit - limit the number os 3rd level categories displayed in dropdowns, applies to all dropdowns</span></li>
+	<li><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; line-height: normal;">Item Image size(WxH) - set a custom size for the item images inside the dropdowns, applies to all dropdowns</span></li>
+	<li><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; line-height: normal;">Dropdown display effect - change the effect of the dropdown display</span></li>
+	<li><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; line-height: normal;">Use hoverIntent - Set if to use hoverintent or not (hoverintent is the plugin that delays the display of the dropdown untill the mouse cursor speed decreased enough over a top item - very usefull and prevents the annoying display of the dropdown each time you cross your mouse over the top menu)</span></li>
+</ol>
+<a name="custom"></a>
+<h2 align="center"><font color="#ff0000">Supermenu Customization</font></h2>
+
+<p> In latest upgrade of supermenu 4 new skins for the menu where added, you can change them in admin in the settings tab</p>
+<p><strong>One of the new skins called Image Menu will display for the top items an image. The image displayed is the Add banner, so when using Image Menu Sking the add banner image that you can set for each item will be the top item image. This also means you will not have banner in the dropdown but you could still use the html areas to add images in the banner area of the dropdown.</strong></p>
+
+<p>The supermenu features an enhanced set of customization options for colors, background, fonts and borders.</p>
+<p><img src="z-instruction-images/custom.jpg" alt="customization" /></p>
+
+<p>Each line has a name/explanation that tells you what that setting does.</p>
+
+<p>The customization settings will only apply when you set "<b style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; line-height: normal;">Apply the customization settings from below?</b>" to yes.</p>
+
+<p>If your theme has a custom font that you would also want supermenu to use put the name of the font in the input box of the "<span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; line-height: normal;">Supermenu font family</span>" line.</p>
+<a name="tweaks"></a>
+<h2 align="center"><font color="#ff0000">Supermenu Tweaks</font></h2>
+
+<p><strong>Change the displayed name of a top item category in the supermenu</strong>.</p>
+
+<p>This can be usefull when you have a category with a long name and you want it to show a shorter name in the top menu.</p>
+
+<p>How to: Add the category to the supermenu. Then edit that item and at item type select "Custom link"&nbsp;instead of category, then at custom link name insert the custom name you want for the category and then select back category at item type. The custom link name will then be saved in the dropdown and will be displayed as the category's name in supermenu.</p>
+<p><strong>Disable a supermenu item.</strong></p>
+
+<p>The supermenu items form does not have a on/off status setting for the items, but if you need to temporarily disable an item without deleting it, you can go in its advanced settings and at stores deselect the default store. To reenable the item later on, reselect the default store in the stores list.</p>
+<p><strong>Children Levels in the more dropdown</strong></p>
+<p>Supermenu displays up to 3rd level of subcategories</p><p>When item type is category: Level1: The category in top menu, Level2: The first level of subcategories in the dropdown, Level3: The subcategories of the categories inside the dropdown </p>
+<p>When the item type is "More dropdown" the menu actually displays only 2 levels of categories, because Level1 Is the More dropdown menu item</p>
+<p>However if you set the more dropdown to display as a dropdown + flyout, then it will display all 3 levels of categories, the Level1 will be the categories in dropdown, Level2 - the first categories in flyout and Level3 - the subcategories of the categories in flyout.</p>
+<p>When adding a menu item (category or more dropdown) as dropdown + flyout make sure to add it trough the first items in the menu so there will be space to the right for the flyout to display (as the flyout allways opens to the right)</p>
+<p><strong>Add a youtube video in the banner space in dropdown</strong></p>
+<p>Go to youtube and get the code for embed video, paste the code in one of the html areas in source mode. Then edit the menu item you want and in its advanced settings at html are select the html area with the video and set it to display in the banner space.</p>
+<a name="support"></a>
+<h2 align="center"><font 
+color=#ff0000>Support</font></h2>
+<p>If after installation , you added items to the supermenu but the supermenu does not show up in your theme, and you followed the installation instructions corecltly and vqmod is installed but supermenu wont show up, contact me on email for support and also atach the file from your store catalog/view/theme/yourtheme/template/common/header.tpl to investigate the reason.Some themes have different structures and sometimes the supermenu.xml fails to apply the changes, in that case based on your theme's file a custom supermenu.xml will be provided. Please note that supermenu is a standalone menu and will not inherit your theme's menu style, it will look as it does in the demo or as you customize it.</p>
+<p><br><font face="Tahoma">That is about it, if I forgot something, or something 
+is wrong , contact me at </font><a href="mailto:flo@shopencart.com"><font 
+face=Tahoma>flo@shopencart.com</font></a></p>
+<p><br><a href="http://shopencart.com"><font 
+face=Tahoma>http://shopencart.com</font></a></p>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+<a name="upgrade"></a>
+<h2 align="center"><font color="#ff0000">Upgrade from previous version of supermenu</font></h2>
+<p>If You added code into the html areas in the previous version of supermenu, backup your html areas content before uploading the new files, as after the upload the html areas will be cleaned.</p>
+<p>Upload the new files in the root of your site. Make sure to select overwrite if the ftp client asks you (this is so the old supermenu files will be overwritten by the new ones)</p>
+<p>After uploading the new files the supermenu in frontend will disappear because the items you added before to supermenu are not set to the default store (this is because the multi store feature was added to supermenu), so you need to edit supermenu in admin , and for each adding item , go in its advanced settings and at store select the default store then save</p>
+<p>Clear the browser cache so the new style of supermenu will be loaded in frontend</p>
+<p>If after upgrade, in frontend the supermenu has errors, then it is still loading the supermenu.tpl from your custom theme, so you need to copy the supermenu.tpl from the default theme (catalog/view/theme/yourtheme/template/module/) overt to your theme in the module folder - this happens if when you first installed supermenu you copied its tpl file over to your theme, but now when uploading the new one, it uploaded directly to the default theme only.</p>
+<p>If initially you installed the non-vqmod version of supermenu (you edited the header files your self) you will ned to update those file as per instructions from the "Install non-vqmod version" chapter.</p>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</div>
+</body>
+</html>

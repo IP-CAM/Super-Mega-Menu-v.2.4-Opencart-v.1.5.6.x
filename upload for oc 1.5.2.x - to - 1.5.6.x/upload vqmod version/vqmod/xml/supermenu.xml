@@ -1,0 +1,31 @@
+<modification>
+	<id>Supermenu Integration Vqmod</id>
+	<version>1.0</version>
+	<vqmver>Latest</vqmver>
+	<author>Flo - shopencart.com</author>
+	<file name="catalog/controller/common/header.php">
+		<operation>
+			<search position="replace"><![CDATA[$categories = $this->model_catalog_category->getCategories(0);]]></search>
+			<add><![CDATA[$categories = array();]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/header.tpl')) {]]></search>
+			<add><![CDATA[$this->data['categories'] = array();]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA['module/language',]]></search>
+			<add><![CDATA['module/supermenu',
+			'module/supermenu_settings',]]></add>
+		</operation>
+	</file>
+	<file name="catalog/view/theme/*/template/common/header.tpl">
+		<operation>
+			<search position="before"><![CDATA[<?php if ($categories) { ?>]]></search>
+			<add><![CDATA[<?php echo $supermenu; ?>]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[<?php foreach ($scripts as $script) { ?>]]></search>
+			<add><![CDATA[<?php echo $supermenu_settings; ?>]]></add>
+		</operation>
+	</file>
+</modification>
